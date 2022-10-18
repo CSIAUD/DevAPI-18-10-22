@@ -42,7 +42,6 @@ let posts = JSON.parse(postFile);
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-let user;
 
 const express = require('express');
 const app = express();
@@ -92,6 +91,7 @@ function getUserIndex(username){
 
 app.post('/login', (req, res) => {
     let index = getUserIndex(req.body.username);
+    let user;
     
    if(index > -1){
      if (req.body.password !== users[index].password) {
